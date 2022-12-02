@@ -4,31 +4,31 @@ import (
 	"math"
 	"time"
 
-	eb "github.com/IgneousRed/EBitEn"
+	et "github.com/IgneousRed/EduTen"
 	m "github.com/IgneousRed/gomisc"
 )
 
 var windowSize = m.Vec2I(800, 600)
-var font eb.Font
+var font et.Font
 
 type Game struct{}
 
 func (g *Game) Update() {
 }
 func (g *Game) Draw() {
-	eb.DrawRectangleI(m.Vec2I(50, 100), m.Vec2I(150, 100), eb.Red)
+	et.DrawRectangleI(m.Vec2I(50, 100), m.Vec2I(150, 100), et.Red)
 	point := windowSize.Div1(2)
 	ang := float64(time.Now().UnixMilli()%10000) / 10000. * math.Pi * 2.
 	other := m.Vec2F(m.Cos(ang), m.Sin(ang)).Mul1(200.).RoundI().Add(point)
-	eb.DrawLineI(point, other, 20, eb.Green)
-	eb.DrawCircleI(m.Vec2I(600, 500), 50, 8, eb.Blue)
-	eb.DrawTextI(font, 40, m.Vec2I(0, 10), "^_^", eb.White)
+	et.DrawLineI(point, other, 20, et.Green)
+	et.DrawCircleI(m.Vec2I(600, 500), 50, 8, et.Blue)
+	et.DrawTextI(font, 40, m.Vec2I(0, 10), "^_^", et.White)
 }
 
 func main() {
-	f, err := eb.FontNew("FiraCode-Medium.ttf")
+	f, err := et.FontNew("FiraCode-Medium.ttf")
 	m.FatalErr("", err)
 	font = f
 	game := Game{}
-	eb.InitGame("Title", windowSize, &game)
+	et.InitGame("Title", windowSize, &game)
 }
