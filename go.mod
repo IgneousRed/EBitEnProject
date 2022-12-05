@@ -1,4 +1,4 @@
-module EduTenProject
+module github.com/IgneousRed/EduTenProject
 
 go 1.19
 
